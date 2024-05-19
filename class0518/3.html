@@ -29,10 +29,14 @@
                 }
             },
             methods: {
+                parseDollar(){
+                    return this.total / 30 // 錯誤寫法->以後computed 
+                },
                 parse(){
-                    console.log('adasdasd');
-                    // this.total = 100 * this.res 錯誤寫法
-                    return this.price * this.res
+                    // console.log('adasdasd');
+                    // return this.price * this.res // 半正確寫法
+                    // this.total = 100 * this.res // 錯誤寫法
+                    
                 },
                 add(){
                     // this.res = this.res + 1
