@@ -27,42 +27,7 @@
     </div>
 
     <script src="https://unpkg.com/vue"></script>
-
     <script>
-        // find elements
-var button = $("#button");
-var number_div =$("#number_div");
-var number = 1;
-button.css({"background-color":"red"});
-
-button.click(function(){
-    switch(number%7){
-    case 1:
-    $(this).css({"background-color":"red"});
-        break;
-    case 2:
-    $(this).css({"background-color":"orange"});
-        break;
-    case 3:
-    $(this).css({"background-color":"yellow"});
-        break;
-        case 4:
-    $(this).css({"background-color":"green"});
-        break;
-        case 5:
-    $(this).css({"background-color":"blue"});
-        break;
-        case 6:
-    $(this).css({"background-color":"#223775"});
-        break;
-        case 0:
-    $(this).css({"background-color":"#A871D7"});
-        break;
-    }
-    number_div.html(number);
-    number++;
-
-})
         Vue.createApp({
             data() {
                 return {
