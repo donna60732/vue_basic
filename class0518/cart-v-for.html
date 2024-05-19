@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+    *{
+        margin: 0;
+    }
+    #app{
+        width: 100vw;
+        height: 50vh;
+        display: inline-flex;
+    }
+    .cart{
+      /* width: 55%; */
+        width: 100%;
+        height: 100%;
+        background-color: #ddd;
+    }
+    .cartItem {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    img {
+        width: 4rem;
+        height: 4rem;
+        background-color: #ddd;
+    }
+    .card-deta{
+        width: 40%;
+        height: 100%;
+        background-color: #999;
+    }
+    button{
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+    }
+    </style>
+</head>
+<!--  -->
+<body>
+    <div id="app">
+        <div class="cart">
+            <h5>Shopping Card</h5>
+            <div class="cartItem"
+            v-for="(cartItem, cartIndex) in cartList"
+            :key="cartItem['id']"  
+            >  <!-- 不會渲染到其他區 --> 
+            <!-- {{cartItem}}
+            {{cartItem.title}} -->
+                <img src="cardList[0]['img']" alt=""><!-- <img src="/images/glass-pink.png" alt=""> -->
+                <div class="cart-text">
+                    <!-- <h3>Chicken momo</h3> -->
+                    <h3>{{cartList[0]['title']}}</h3>
+                    <!-- <p>#42316448</p> -->
+                    <p>{{cartList[0]['subTitle']}}</p>
+                    <!-- <p>$10.50</p> -->
+                    <p>${{cartList[0]['price']}}</p>
+                </div>
+                <div>
+                    <button @click="reduce(1)">-</button> <!-- <button>-</button> -->
+                    {{cartList[1]['count']}} <!--顯示數字的地方 -->
+                    <button @click="add(1)">+</button> <!-- <button>+</button> -->
+                    <button>X</button>
+                </div>
+            </div>
+        </div>
+    <div class="card-deta"></div>
+</div>
+
+    <script src="https://unpkg.com/vue"></script>
+
+    <script>
+        Vue.createApp({
+            data() {    // 資料結構陣列
+                return {
+                    cartList:[
+                        {
+                        id:1,
+                        title:'aaa',
+                        subTitle:'bbb',
+                        price:100,
+                        count:1,
+                        img:"/images/glass-pink.png"
+                        },
+                        {
+                        id:2,
+                        title:'ccc',
+                        subTitle:'ddd',
+                        price:150,
+                        count:2,
+                        img:"/images/glass-pink.png"
+                        },
+                    ]
+                }
+            },
+            methods: {
+                add(index){
+                    this.cartList[index]['count'] += 1
+                },
+                reduce(index){
+                    if(this.cartList[index]['count'] == 0)return
+                    this.cartList[index]['count'] -= 1
+                }
+            },
+        }).mount("#app")
+    </script>
+</body>
+</html>
