@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 2rem;
+            height: 2rem;
+            background-color:#ddd;
+        }
+        .red {
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{tab}}
+        <button @click="tab = !tab">換色</button>
+        <!-- <div class="box red green"></div> -->
+        <div class="box" :class=" tab?'red' : 'green' "></div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+
+    <script>
+        // find elements
+var button = $("#button");
+var number_div =$("#number_div");
+var number = 1;
+button.css({"background-color":"red"});
+
+button.click(function(){
+    switch(number%7){
+    case 1:
+    $(this).css({"background-color":"red"});
+        break;
+    case 2:
+    $(this).css({"background-color":"orange"});
+        break;
+    case 3:
+    $(this).css({"background-color":"yellow"});
+        break;
+        case 4:
+    $(this).css({"background-color":"green"});
+        break;
+        case 5:
+    $(this).css({"background-color":"blue"});
+        break;
+        case 6:
+    $(this).css({"background-color":"#223775"});
+        break;
+        case 0:
+    $(this).css({"background-color":"#A871D7"});
+        break;
+    }
+    number_div.html(number);
+    number++;
+
+})
+        // Vue.createApp({
+        //     data() {
+        //         return {
+        //             tab:true
+        //         }
+        //     },
+        //     methods: {
+        //     },
+        // }).mount("#app")
+    </script>
+</body>
+</html>
